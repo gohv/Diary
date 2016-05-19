@@ -1,0 +1,3 @@
+[submodule "Diary"]
+	path = Diary
+	url = ./

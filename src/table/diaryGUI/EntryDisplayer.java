@@ -31,8 +31,10 @@ public class EntryDisplayer extends JFrame {
 		try {
 			CSVReader reader = new CSVReader(new FileReader("file/Diary.csv"));
 			List<String[]> myEntries = reader.readAll();
-			String[] colNames = { "Date", "Entry" };
+			//grozen kod:
+			String[] colNames = { "Date", "Entry"};
 			DefaultTableModel tableModel = new DefaultTableModel(colNames, myEntries.size() - 1);
+			
 			int rowcount = tableModel.getRowCount();
 			for (int x = 0; x < rowcount + 1; x++) {
 				int columnnumber = 0;
@@ -45,8 +47,10 @@ public class EntryDisplayer extends JFrame {
 				}
 
 			}
+		
 			JTable table = new JTable(tableModel);
-			setBounds(50, 50, 800, 300);
+			table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+			setBounds(50, 50, 650, 300);
 			JScrollPane scrollPane = new JScrollPane(table);
 			scrollPane.setBounds(12, 13, 577, 246);
 			getContentPane().add(scrollPane);
@@ -65,4 +69,5 @@ public class EntryDisplayer extends JFrame {
 			e.printStackTrace();
 		}
 	}
+
 }
